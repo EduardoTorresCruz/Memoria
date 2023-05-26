@@ -15,7 +15,7 @@ class Intro extends Phaser.Scene {
     }
 }
 
-class Title extends Phaser.scene {
+class Title extends Phaser.Scene {
     constructor() {
         super('title')
     }
@@ -26,6 +26,21 @@ class Title extends Phaser.scene {
 
     create() {
         this.add.text(game.config.width/2, game.config.height/2, 'title will go here')
+    }
+}
+
+class Test extends GameScene {
+    constructor() {
+        super('test')
+    }
+
+    preload() {
+
+    }
+
+    create() {
+        this.add.text(game.config.width/2, game.config.height/2, 'click to go back to intro')
+        this.input.on('pointerdown', () => this.gotoScene(intro))
     }
 }
 
