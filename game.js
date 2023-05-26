@@ -1,4 +1,7 @@
-class AdventureScene extends Phaser.Scene {
+// Taken from Professor Adam Smith
+// Modified by us
+
+class GameScene extends Phaser.Scene {
 
     init(data) {
         this.inventory = data.inventory || [];
