@@ -43,7 +43,7 @@ class GameScene extends Phaser.Scene {
         this.add.text(this.w-3*this.s, this.h-3*this.s, "📺")
             .setStyle({ fontSize: `${2 * this.s}px` })
             .setInteractive({useHandCursor: true})
-            .on('pointerover', () => this.showMessage('Fullscreen?'))
+            .on('pointerover', () => this.showMessage('Click to enter fullscreen'))
             .on('pointerdown', () => {
                 if (this.scale.isFullscreen) {
                     this.scale.stopFullscreen();
