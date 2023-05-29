@@ -8,11 +8,14 @@ class Intro extends Phaser.Scene {
     }
 
     create() {
-        this.add.text(game.config.width/2, game.config.height/2, 'click to go to title').setFontSize(50)
-        this.input.on('pointerdown', () => {
-            this.cameras.main.fade(1000, 0, 0, 0);
-            this.time.delayedCall(1000, () => this.scene.start('title'))
-        });
+        this.add.text(game.config.width/2, game.config.height/2, 'click to go to title')
+            .setFontSize(50)
+            .setOrigin(0.5)
+            .setInteractive({useHandCursor: true})
+            .on('pointerdown', () => {
+                this.cameras.main.fade(1000, 0, 0, 0);
+                this.time.delayedCall(1000, () => this.scene.start('title'))
+            });
     }
 }
 
@@ -26,26 +29,32 @@ class Title extends Phaser.Scene {
     }
 
     create() {
-        this.add.text(game.config.width/2, game.config.height/2, 'title will go here').setFontSize(50)
-        this.input.on('pointerdown', () => {
-            this.cameras.main.fade(1000, 0, 0, 0);
-            this.time.delayedCall(1000, () => this.scene.start('test'))
-        });
+        this.add.text(game.config.width/2, game.config.height/2, 'title will go here\nalso click to continue to next scene')
+            .setFontSize(50)
+            .setOrigin(0.5)
+            .setInteractive({useHandCursor: true})
+            .on('pointerdown', () => {
+                this.cameras.main.fade(1000, 0, 0, 0);
+                this.time.delayedCall(1000, () => this.scene.start('test'))
+            });
     }
 }
 
 class Test extends GameScene {
     constructor() {
-        super('test')
+        super('test', 'Test');
     }
 
     preload() {
 
     }
 
-    create() {
-        this.add.text(game.config.width/2, game.config.height/2, 'click to go back to intro').setFontSize(50)
-        this.input.on('pointerdown', () => this.gotoScene('intro'))
+    onEnter() {
+        this.add.text(game.config.width/2, game.config.height/2, 'click here to go back to intro')
+            .setFontSize(50)
+            .setOrigin(0.5)
+            .setInteractive({useHandCursor: true})
+            .on('pointerdown', () => this.gotoScene('intro'))
     }
 }
 
@@ -53,8 +62,8 @@ const game = new Phaser.Game({
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
-        width: 1920,
-        height: 1080
+        width: 1900,
+        height: 1000
     },
     type: Phaser.AUTO,
     scene: [Intro, Title, Test],
