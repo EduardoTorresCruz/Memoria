@@ -1,11 +1,9 @@
 # CMPM-Final-Project
 Final Project for CMPM 120 at UCSC
 
-## Testing test test test
-
 ## Credits
 
-Julian Lara
-Xing Zhong
-Eduardo Torres Cruz
+Julian Lara  
+Xing Zhong  
+Eduardo Torres Cruz  
 Elyzza Joyce Marquez
