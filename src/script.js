@@ -15,8 +15,7 @@ class Intro extends Phaser.Scene {
             .setOrigin(0.5)
             .setInteractive({useHandCursor: true})
             .on('pointerdown', () => {
-                this.cameras.main.fade(1000, 0, 0, 0)
-                this.time.delayedCall(1000, () => this.scene.start('title'))
+                this.time.delayedCall(75, () => this.scene.start('title'))
             });
     }
 }
@@ -33,6 +32,6 @@ const game = new Phaser.Game({
         arcade: {debug: true}
     },
     type: Phaser.AUTO,
-    scene: [Intro, Title, Test],
+    scene: [Intro, Title, Settings, Pointandclick],
     title: "Final Project",
 });

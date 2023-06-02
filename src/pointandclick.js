@@ -1,4 +1,4 @@
-class Test extends GameScene {
+class Pointandclick extends GameScene {
     constructor() {
         super('test', 'Test')
     }
