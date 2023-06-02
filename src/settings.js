@@ -4,11 +4,15 @@ class Settings extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('exit', 'assets/Buttons/Exit button.png')
+        this.load.path = '../assets/'
+        this.load.image('exit', 'Buttons/Exit button.png')
+        this.load.audio('page', 'sounds/page.mp3')
     }
 
     create() {
         this.cameras.main.setBackgroundColor('#444')
+
+        this.page = this.sound.add('page').setVolume(0.25)
 
         this.musicToggle = this.add.text(game.config.width/2, game.config.height/2.1, "Toggle sound 🔈")
             .setColor(0xFFFFFF)
@@ -38,6 +42,7 @@ class Settings extends Phaser.Scene {
             .on('pointerover', () => this.exit.setScale(0.55))
             .on('pointerout', () => this.exit.setScale(0.5))
             .on('pointerdown', () => {
+                this.page.play()
                 this.time.delayedCall(75, () => this.scene.start('title'))
             })
     }
