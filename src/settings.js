@@ -30,6 +30,10 @@ class Settings extends Phaser.Scene {
                     this.musicToggle.setText("Toggle sound 🔇")
                 }
             });
+
+        if (game.sound.mute) {
+            this.musicToggle.setText("Toggle sound 🔇")
+        }
         
         this.exit = this.add.image(game.config.width/2, game.config.height/3.5, 'exit')
             .setOrigin(0.5)
