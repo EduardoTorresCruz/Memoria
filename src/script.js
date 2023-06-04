@@ -32,6 +32,6 @@ const game = new Phaser.Game({
         arcade: {debug: true}
     },
     type: Phaser.AUTO,
-    scene: [Intro, Title, Settings, Test],
+    scene: [Intro, Title, Settings, Test, Test2],
     title: "Final Project",
 });
