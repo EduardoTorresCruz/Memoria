@@ -26,7 +26,8 @@ class Title extends Phaser.Scene {
     }
 
     preload() {
-        this.load.path = '/assets/'
+        // this.load.path = '/assets/'
+        this.load.path = '/CMPM-Final-Project/assets/'
         this.load.image('title', 'Names/Title.png')
         this.load.image('start', 'Buttons/Start button.png')
         this.load.image('options', 'Buttons/Options button.png')
@@ -80,7 +81,8 @@ class Settings extends Phaser.Scene {
     }
 
     preload() {
-        this.load.path = '/assets/'
+        // this.load.path = '/assets/'
+        this.load.path = '/CMPM-Final-Project/assets/'
         this.load.image('exit', 'Buttons/Exit button.png')
         this.load.audio('page', 'sounds/page.mp3')
     }
@@ -134,7 +136,8 @@ class Test1 extends GameScene {
     }
 
     preload() {
-        this.load.path = '/assets/'
+        // this.load.path = '/assets/'
+        this.load.path = '/CMPM-Final-Project/assets/'
         this.load.image('snail', 'snail.png')
         this.load.image('lighton', 'Buttons/Light switch on.png')
         this.load.image('lightoff', 'Buttons/Light switch off.png')
@@ -211,7 +214,8 @@ class Test2 extends GameScene {
     }
 
     preload() {
-        this.load.path = '/assets/'
+        // this.load.path = '/assets/'
+        this.load.path = '/CMPM-Final-Project/assets/'
         this.load.image('lighton', 'Buttons/Light switch on.png')
         this.load.image('lightoff', 'Buttons/Light switch off.png')
     }
