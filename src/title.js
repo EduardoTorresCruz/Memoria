@@ -49,5 +49,8 @@ class Title extends Phaser.Scene {
                 this.page.play()
                 this.time.delayedCall(100, () => this.scene.start('settings'))
             })
+
+        this.add.text(game.config.width/2, game.config.height/2, 'readme')
+            .setFontSize(50)
     }
 }
