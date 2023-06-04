@@ -6,6 +6,7 @@ class Template extends GameScene {
     preload() {
         this.load.path = '/assets/' // <- for local
         // this.load.path = '/CMPM-Final-Project/assets/' // <- for github
+        this.load.image('bg', 'Background/Background.png')
         this.load.image('lighton', 'Buttons/Light switch on.png')
         this.load.image('lightoff', 'Buttons/Light switch off.png')
         this.load.audio('switchon', 'sounds/LIGHT SWITCH ON SOUND.mp3')

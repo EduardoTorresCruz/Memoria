@@ -1,12 +1,6 @@
-const {Vector2} = Phaser.Math;
-
 class Intro extends Phaser.Scene {
     constructor() {
         super('intro')
-    }
-
-    preload() {
-
     }
 
     create() {
@@ -55,7 +49,7 @@ class Title extends Phaser.Scene {
             .on('pointerout', () => this.start.setScale(0.5))
             .on('pointerdown', () => {
                 this.page.play()
-                this.time.delayedCall(100, () => this.scene.start('test1'))
+                this.time.delayedCall(100, () => this.scene.start('livingroom'))
             })
         
         this.options = this.add.image(game.config.width/2, game.config.height/2.5, 'options')
@@ -261,6 +255,6 @@ const game = new Phaser.Game({
         arcade: {debug: true}
     },
     type: Phaser.AUTO,
-    scene: [Intro, Title, Settings, Test1, Test2],
+    scene: [Intro, Title, Settings, LivingRoom, Test1, Test2],
     title: "Final Project",
 });
