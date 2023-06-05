@@ -10,7 +10,7 @@ class LivingRoom extends GameScene {
         this.load.image('lightoff', 'Buttons/Light switch off.png')
         this.load.image('bg', 'Background/Background.png')
         this.load.image('player', 'Delilah.png')
-        this.load.image('Mother', 'Mother.png')
+        this.load.image('mother', 'Mother.png')
         this.load.image('RoomOn', 'LivingRoom/LivingRoomLightON.png')
         this.load.image('RoomOff', 'LivingRoom/LivingRoomLightOFF.png')
         this.load.image('doorVert', 'Bathroom/Bathroom door.png')
@@ -36,6 +36,7 @@ class LivingRoom extends GameScene {
 
         this.cursors = this.input.keyboard.createCursorKeys();
         this.player = new Player(this, 750, 1500);
+        //this.mom = new Mom(this, 100, 100);
         this.input.on('pointerdown', this.player.movePlayer, this.player);
 
         this.frameMsg = 'A worn family picture. You and your family seem so happy.'
@@ -90,7 +91,7 @@ class LivingRoom extends GameScene {
             .setOrigin(0.5)
             .setInteractive({useHandCursor: true})
             .on('pointerover', () => this.showMessage('A door'))
-            .on('pointerdown', () => this.showMessage("The door to the backyard. There's no reason to go outside."))
+            .on('pointerdown', () => this.gotoScene('masterbedroom'))
 
         // this.bathroom1 = 
 
