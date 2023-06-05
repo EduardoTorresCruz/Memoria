@@ -57,6 +57,16 @@ class LivingRoom extends GameScene {
         if (object == this.bedroom) {
             this.showMessage("It's your old room. You don't exactly feel the need to go inside.")
         }
+        if (object == this.exit) {
+            if (this.hasItem('Baby Crying Clue') && this.hasItem('Broken Record') && this.hasItem('Refurbished Record') && this.hasItem("Mother's Diary")) {
+                this.creak.play()
+                this.bgm.stop()
+                this.gotoScene('credits')
+            }
+            else {
+                this.showMessage("You feel like you're missing something.")
+            }
+        }
     }
 
     onEnter() {
@@ -193,6 +203,16 @@ class LivingRoom extends GameScene {
             .setInteractive({useHandCursor: true})
             .on('pointerover', () => this.showMessage("Your bedroom door"))
 
+        this.exit = this.add.rectangle(750, 980, 200, 10, 0xFFFFFF, 0.5)
+        this.physics.add.existing(this.exit)
+        this.exit.setVisible(false)
+
+        this.exitinter = this.add.text(740, 980, '           ')
+            .setFontSize(30)
+            .setOrigin(0.5)
+            .setInteractive({useHandCursor: true})
+            .on('pointerover', () => this.showMessage("Exit"))
+
         // tint for when light is off
         this.screenTint = this.add.rectangle(0, 0, this.w-500, this.h, 0x000000, 0.5)
             .setOrigin(0, 0)
@@ -255,6 +275,7 @@ class LivingRoom extends GameScene {
         this.physics.add.overlap(this.player, this.bathroom, this.interact, null, this)
         this.physics.add.overlap(this.player, this.babyroom, this.interact, null, this)
         this.physics.add.overlap(this.player, this.bedroom, this.interact, null, this)
+        this.physics.add.overlap(this.player, this.exit, this.interact, null, this)
 
         // setting world bounds
         let leftBarrier = this.physics.add.sprite(this.roomOn.x-550, this.roomOn.y, null).setImmovable(true);
