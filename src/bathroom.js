@@ -24,7 +24,10 @@ class BathRoom extends GameScene {
             .setScale(0.9)
             .setVisible(false)
             .setImmovable(true);
-        
+        this.screenTint = this.add.rectangle(0, 0, this.w-500, this.h, 0x000000, 0.5)
+            .setOrigin(0, 0)
+            .setVisible(false)
+
         this.lightOn = this.add.image(this.w-4*this.s, this.h-6*this.s, 'lighton')
             .setScale(0.1)
         this.lightOff = this.add.image(this.w-2*this.s, this.h-6*this.s, 'lightoff')
@@ -41,6 +44,7 @@ class BathRoom extends GameScene {
         }
 
         this.light = 1
+
         this.lightSwitchinter = this.add.text(this.w-3*this.s, this.h-8*this.s, '  \n  ')
             .setFontSize(`${(2 * this.s) - 10}px`)
             .setInteractive({useHandCursor: true})

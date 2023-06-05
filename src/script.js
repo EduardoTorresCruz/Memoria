@@ -255,6 +255,6 @@ const game = new Phaser.Game({
         arcade: {debug: true}
     },
     type: Phaser.AUTO,
-    scene: [BabyRoom, Intro, Title, Settings, LivingRoom, BathRoom, Test1, Test2],
+    scene: [Intro, Title, Settings, LivingRoom, BathRoom, BabyRoom, Test1, Test2],
     title: "Final Project",
 });

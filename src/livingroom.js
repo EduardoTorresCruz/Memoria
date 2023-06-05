@@ -9,7 +9,7 @@ class LivingRoom extends GameScene {
         this.load.image('lighton', 'Buttons/Light switch on.png')
         this.load.image('lightoff', 'Buttons/Light switch off.png')
         this.load.image('bg', 'Background/Background.png')
-        this.load.image('Delilah', 'Delilah.png')
+        this.load.image('player', 'Delilah.png')
         this.load.image('Mother', 'Mother.png')
         this.load.image('RoomOn', 'LivingRoom/LivingRoomLightON.png')
         this.load.image('RoomOff', 'LivingRoom/LivingRoomLightOFF.png')
@@ -35,12 +35,12 @@ class LivingRoom extends GameScene {
         this.babyDoor = this.add.image(game.config.width/6.1, game.config.height/1.42, 'doorHori').setScale(0.5)
 
         this.cursors = this.input.keyboard.createCursorKeys();
-        this.player = new Player(this, 100, 100);
+        this.player = new Player(this, 750, 1500);
         this.input.on('pointerdown', this.player.movePlayer, this.player);
 
         this.frameMsg = 'A worn family picture. You and your family seem so happy.'
-        this.frame = this.add.rectangle(game.config.width/2.05, 160, 300, 10, 0xFFFFFF, 0.5)
-        this.physics.add(this.frame)
+        // this.frame = this.add.rectangle(game.config.width/2.05, 160, 300, 10, 0xFFFFFF, 0.5)
+        // this.physics.add(this.frame)
             // .setInteractive({useHandCursor: true})
             // .on('pointerover', () => this.showMessage('A family portrait'))
             // .on('pointerdown', () => this.showMessage(this.frameMsg))
@@ -164,9 +164,5 @@ class LivingRoom extends GameScene {
 
     update() {
         this.player.update(this.cursors);
-    }
-
-    shutdown() {
-        this.player.destroy();
     }
 }
