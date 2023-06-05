@@ -116,8 +116,7 @@ const game = new Phaser.Game({
         height: 1000
     },
     physics: {
-        default: 'arcade',
-        arcade: {debug: true}
+        default: 'arcade'
     },
     type: Phaser.AUTO,
     scene: [Title, Settings, LivingRoom, BathRoom, BabyRoom, Credits],
