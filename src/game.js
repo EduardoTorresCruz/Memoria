@@ -70,10 +70,6 @@ class GameScene extends Phaser.Scene {
             this.musicToggle.setText("🔇")
         }
 
-        this.screenTint = this.add.rectangle(0, 0, this.w, this.h, 0x000000, 0.5)
-            .setOrigin(0, 0)
-            .setVisible(false)
-
         this.onEnter();
 
     }
