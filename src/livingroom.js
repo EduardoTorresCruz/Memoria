@@ -41,23 +41,22 @@ class LivingRoom extends GameScene {
         }
         if (object == this.master) {
             this.creak.play()
+            this.bgm.stop()
             this.showMessage('implement go to scene master bedroom')
             // this.gotoScene('masterbedroom')
         }
         if (object == this.bathroom) {
             this.creak.play()
-            this.showMessage('implement go to scene bathroom')
+            this.bgm.stop()
             this.gotoScene('bathroom')
         }
         if (object == this.babyroom) {
             this.creak.play()
-            this.showMessage('implement go to scene babyroom')
+            this.bgm.stop()
             this.gotoScene('babyroom')
         }
         if (object == this.bedroom) {
-            this.creak.play()
-            this.showMessage('implement go to scene bedroom')
-            // this.gotoScene('bedroom')
+            this.showMessage("It's your old room. You don't exactly feel the need to go inside.")
         }
     }
 
