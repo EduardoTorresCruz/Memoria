@@ -76,7 +76,11 @@ class LivingRoom extends GameScene {
 
         // adding player
         this.cursors = this.input.keyboard.createCursorKeys();
-        this.player = new Player(this, 750, 1500);
+        if(this.startPosition){
+            this.player = new Player(this, this.startPosition.x, this.startPosition.y)
+        }else{
+            this.player = new Player(this, 750, 1500);
+        }
         this.input.on('pointerdown', this.player.movePlayer, this.player);
 
         // adding sounds

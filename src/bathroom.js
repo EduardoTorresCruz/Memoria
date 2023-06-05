@@ -23,7 +23,7 @@ class BathRoom extends GameScene {
         if (object == this.livingroom) {
             this.creak.play()
             this.showMessage('implement go to scene living room')
-            this.gotoScene('livingroom')
+            this.gotoLivingScene('livingroom', {x:350, y:515})
         }
     }
 
@@ -83,36 +83,20 @@ class BathRoom extends GameScene {
                     this.roomOff.body.enable = false;
                 }
             });
+            
         this.cursors = this.input.keyboard.createCursorKeys();
         this.player = new Player(this, 500, 550);
         this.input.on('pointerdown', this.player.movePlayer, this.player);
 
-
         this.livingroom = this.add.rectangle(game.config.width/4.5, game.config.height/1.8, 10, 100, 0xFFFFFF, 0.5)
         this.physics.add.existing(this.livingroom)
         this.livingroom.setVisible(false)
-        
         this.livingroominter = this.add.text(game.config.width/4.5, game.config.height/1.8, ' \n \n ')
             .setFontSize(30)
             .setOrigin(0.5)
             .setInteractive({useHandCursor: true})
             .on('pointerover', () => this.showMessage('Livingroom door'))
         this.physics.add.overlap(this.player, this.livingroom, this.interact, null, this)
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         let leftBarrier = this.physics.add.sprite(this.roomOn.x-350, this.roomOn.y, null).setImmovable(true);
         leftBarrier.body.setSize(1, this.roomOn.height);

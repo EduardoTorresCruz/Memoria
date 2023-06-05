@@ -8,7 +8,7 @@ class BabyRoom extends GameScene {
         // this.load.path = '/CMPM-Final-Project/assets/' // <- for github
         this.load.image('BabyRoomOn', 'Babyroom/babyRoomOn.png')
         this.load.image('BabyRoomOff', 'Babyroom/babyRoomOFF.png')
-
+        this.load.audio('creak', 'sounds/creak.mp3')
 
         // this.load.image('lighton', 'Buttons/Light switch on.png')
         // this.load.image('lightoff', 'Buttons/Light switch off.png')
@@ -20,7 +20,17 @@ class BabyRoom extends GameScene {
         // this.load.audio('switchoff', 'sounds/LIGHT SWITCH OFF SOUND.mp3')
     }
 
+    interact(player, object) {
+        if (object == this.livingroom) {
+            this.creak.play()
+            this.showMessage('implement go to scene living room')
+            this.gotoLivingScene('livingroom', {x:315, y:485})
+        }
+    }
+
     onEnter() {
+        this.creak = this.sound.add('creak').setVolume(0.25)
+
         this.roomOn = this.physics.add.sprite(game.config.width/2-208, game.config.height/2, 'BabyRoomOn').setScale(0.7).setImmovable(true);
         this.roomOff = this.physics.add.sprite(game.config.width/2-208, game.config.height/2, 'BabyRoomOff')
             .setScale(0.7)
@@ -77,10 +87,22 @@ class BabyRoom extends GameScene {
                     this.frameMsg = 'A picture of a family of 4. They seem so happy.'
                 }
             });
+        this.cursors = this.input.keyboard.createCursorKeys();
+        this.player = new Player(this, 325, 235);
+        this.input.on('pointerdown', this.player.movePlayer, this.player);
 
+        this.livingroom = this.add.rectangle(game.config.width/5.85, game.config.height/10, 100, 125, 0xFFFFFF, 0.5)
+        this.physics.add.existing(this.livingroom)
+        this.livingroom.setVisible(false)
+        this.livingroominter = this.add.text(game.config.width/5.85, game.config.height/10, '     ')
+            .setFontSize(30)
+            .setOrigin(0.5)
+            .setInteractive({useHandCursor: true})
+            .on('pointerover', () => this.showMessage('Livingroom door'))
+        this.physics.add.overlap(this.player, this.livingroom, this.interact, null, this)
     }
 
-    // update() {
-    //     this.player.update(this.cursors);
-    // }
+    update() {
+        this.player.update(this.cursors);
+    }
 }
