@@ -4,8 +4,8 @@ class Title extends Phaser.Scene {
     }
 
     preload() {
-        this.load.path = '/assets/' // local
-        // this.load.path = '/CMPM-Final-Project/assets/' // github
+        // this.load.path = '/assets/' // local
+        this.load.path = '/Memoria/assets/' // github
         this.load.image('title', 'Names/Title.png')
         this.load.image('start', 'Buttons/Start button.png')
         this.load.image('options', 'Buttons/Options button.png')
@@ -59,8 +59,8 @@ class Settings extends Phaser.Scene {
     }
 
     preload() {
-        this.load.path = '/assets/' // local
-        // this.load.path = '/CMPM-Final-Project/assets/' // github
+        // this.load.path = '/assets/' // local
+        this.load.path = '/Memoria/assets/' // github
         this.load.image('exit', 'Buttons/Exit button.png')
         this.load.audio('page', 'sounds/page.mp3')
     }

@@ -4,8 +4,8 @@ class LivingRoom extends GameScene {
     }
 
     preload() {
-        this.load.path = '/assets/' // <- for local
-        // this.load.path = '/CMPM-Final-Project/assets/' // <- for github
+        // this.load.path = '/assets/' // <- for local
+        this.load.path = '/Memoria/assets/' // <- for github
         this.load.image('lighton', 'Buttons/Light switch on.png')
         this.load.image('lightoff', 'Buttons/Light switch off.png')
         this.load.image('bg', 'Background/Background.png')

@@ -4,8 +4,8 @@ class BathRoom extends GameScene {
     }
 
     preload() {
-        this.load.path = '/assets/' // <- for local
-        // this.load.path = '/CMPM-Final-Project/assets/' // <- for github
+        // this.load.path = '/assets/' // <- for local
+        this.load.path = '/Memoria/assets/' // <- for github
         this.load.image('BathRoomOn', 'Bathroom/Bathroom.png')
         this.load.image('BathRoomOff', 'Bathroom/BathroomLightOFF.png')
         this.load.audio('creak', 'sounds/creak.mp3')
