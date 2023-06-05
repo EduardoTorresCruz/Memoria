@@ -4,8 +4,8 @@ class BabyRoom extends GameScene {
     }
 
     preload() {
-        this.load.path = '/assets/' // <- for local
-        // this.load.path = '/Memoria/assets/' // <- for github
+        //this.load.path = '/assets/' // <- for local
+        this.load.path = '/Memoria/assets/' // <- for github
         this.load.image('BabyRoomOn', 'Babyroom/babyRoomOn.png')
         this.load.image('BabyRoomOff', 'Babyroom/babyRoomOFF.png')
         this.load.audio('creak', 'sounds/creak.mp3')
