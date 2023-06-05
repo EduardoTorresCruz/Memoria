@@ -47,12 +47,12 @@ class LivingRoom extends GameScene {
         if (object == this.bathroom) {
             this.creak.play()
             this.showMessage('implement go to scene bathroom')
-            // this.gotoScene('bathroom')
+            this.gotoScene('bathroom')
         }
         if (object == this.babyroom) {
             this.creak.play()
             this.showMessage('implement go to scene babyroom')
-            // this.gotoScene('babyroom')
+            this.gotoScene('babyroom')
         }
         if (object == this.bedroom) {
             this.creak.play()
@@ -243,7 +243,6 @@ class LivingRoom extends GameScene {
                     this.tvMsg = "The TV seems old and broken. It won't turn on."
                 }
             });
-
         // object interactivity
         this.physics.add.overlap(this.player, this.frame, this.interact, null, this)
         this.physics.add.overlap(this.player, this.tv, this.interact, null, this)

@@ -6,21 +6,32 @@ class BathRoom extends GameScene {
     preload() {
         this.load.path = '/assets/' // <- for local
         // this.load.path = '/CMPM-Final-Project/assets/' // <- for github
-        this.load.image('lighton', 'Buttons/Light switch on.png')
-        this.load.image('lightoff', 'Buttons/Light switch off.png')
-        this.load.image('player', 'Delilah.png')
-        this.load.image('Mother', 'Mother.png')
-        this.load.image('RoomOn', 'Bathroom/Bathroom.png')
-        this.load.image('RoomOff', 'Bathroom/BathroomLightOFF.png')
-        this.load.image('ClosedDoor', 'Bathroom/Bathroom door.png')
-        this.load.image('Opendoor', 'Door.png')
-        this.load.audio('switchon', 'sounds/LIGHT SWITCH ON SOUND.mp3')
-        this.load.audio('switchoff', 'sounds/LIGHT SWITCH OFF SOUND.mp3')
+        this.load.image('BathRoomOn', 'Bathroom/Bathroom.png')
+        this.load.image('BathRoomOff', 'Bathroom/BathroomLightOFF.png')
+        //this.load.image('lighton', 'Buttons/Light switch on.png')
+        //this.load.image('lightoff', 'Buttons/Light switch off.png')
+        //this.load.image('player', 'Delilah.png')
+        //this.load.image('Mother', 'Mother.png')
+        //this.load.image('ClosedDoor', 'Bathroom/Bathroom door.png')
+        //this.load.image('Opendoor', 'Door.png')
+        //this.load.audio('switchon', 'sounds/LIGHT SWITCH ON SOUND.mp3')
+        //this.load.audio('switchoff', 'sounds/LIGHT SWITCH OFF SOUND.mp3')
+        this.load.audio('creak', 'sounds/creak.mp3')
+    }
+
+    interact(player, object) {
+        if (object == this.livingroom) {
+            this.creak.play()
+            this.showMessage('implement go to scene living room')
+            this.gotoScene('livingroom')
+        }
     }
 
     onEnter() {
-        this.roomOn = this.physics.add.sprite(game.config.width/2-208, game.config.height/2, 'RoomOn').setScale(0.9).setImmovable(true);
-        this.roomOff = this.physics.add.sprite(game.config.width/2-208, game.config.height/2, 'RoomOff')
+        this.creak = this.sound.add('creak').setVolume(0.25)
+
+        this.roomOn = this.physics.add.sprite(game.config.width/2-208, game.config.height/2, 'BathRoomOn').setScale(0.9).setImmovable(true);
+        this.roomOff = this.physics.add.sprite(game.config.width/2-208, game.config.height/2, 'BathRoomOff')
             .setScale(0.9)
             .setVisible(false)
             .setImmovable(true);
@@ -60,7 +71,6 @@ class BathRoom extends GameScene {
                     this.roomOff.setVisible(true)
                     this.roomOn.body.enable = false;
                     this.roomOff.body.enable = true;
-                    this.frameMsg = "A picture of a family of 4. The father's and baby's eyes are crossed out."
                 } else {
                     this.switchOn.play()
                     this.lightOff.setVisible(false)
@@ -71,15 +81,38 @@ class BathRoom extends GameScene {
                     this.roomOn.setVisible(true)
                     this.roomOn.body.enable = true;
                     this.roomOff.body.enable = false;
-                    this.frameMsg = 'A picture of a family of 4. They seem so happy.'
                 }
             });
-
-
-
         this.cursors = this.input.keyboard.createCursorKeys();
-        this.player = new Player(this, 450, 550);
+        this.player = new Player(this, 500, 550);
         this.input.on('pointerdown', this.player.movePlayer, this.player);
+
+
+        this.livingroom = this.add.rectangle(game.config.width/4.5, game.config.height/1.8, 10, 100, 0xFFFFFF, 0.5)
+        this.physics.add.existing(this.livingroom)
+        this.livingroom.setVisible(false)
+        
+        this.livingroominter = this.add.text(game.config.width/4.5, game.config.height/1.8, ' \n \n ')
+            .setFontSize(30)
+            .setOrigin(0.5)
+            .setInteractive({useHandCursor: true})
+            .on('pointerover', () => this.showMessage('Livingroom door'))
+        this.physics.add.overlap(this.player, this.livingroom, this.interact, null, this)
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         let leftBarrier = this.physics.add.sprite(this.roomOn.x-350, this.roomOn.y, null).setImmovable(true);
         leftBarrier.body.setSize(1, this.roomOn.height);
@@ -87,9 +120,17 @@ class BathRoom extends GameScene {
         let rightBarrier = this.physics.add.sprite(this.roomOn.x+350, this.roomOn.y, null).setImmovable(true);
         rightBarrier.body.setSize(1, this.roomOn.height);
         rightBarrier.setVisible(false);
+        let smallBarrier1 = this.physics.add.sprite(475, 825, null).setImmovable(true);
+        smallBarrier1.body.setSize(150, 400);
+        smallBarrier1.setVisible(false);
+        let smallBarrier2 = this.physics.add.sprite(475, 25, null).setImmovable(true);
+        smallBarrier2.body.setSize(150, 100);
+        smallBarrier2.setVisible(false);
 
         this.physics.add.collider(this.player, leftBarrier);
         this.physics.add.collider(this.player, rightBarrier);
+        this.physics.add.collider(this.player, smallBarrier1);
+        this.physics.add.collider(this.player, smallBarrier2);
 
     }
 
