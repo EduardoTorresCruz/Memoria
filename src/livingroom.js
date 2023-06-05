@@ -17,7 +17,6 @@ class LivingRoom extends GameScene {
         this.load.image('doorHori', 'Door.png')
         this.load.audio('switchon', 'sounds/LIGHT SWITCH ON SOUND.mp3')
         this.load.audio('switchoff', 'sounds/LIGHT SWITCH OFF SOUND.mp3')
-        this.load.audio('page', 'sounds/page.mp3')
         this.load.audio('bgm', 'sounds/ambience.wav')
         this.load.audio('cry', 'sounds/mom crying.mp3')
         this.load.audio('creak', 'sounds/creak.mp3')
