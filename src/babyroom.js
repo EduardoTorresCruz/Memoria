@@ -33,6 +33,11 @@ class BabyRoom extends GameScene {
             if (this.light == 0) this.gainItem('Broken Record')
             else this.gainItem('Refurbished Record')
         }
+        if (this.hasItem('Baby Crying Clue') && this.hasItem('Broken Record') && this.hasItem('Refurbished Record') && this.hasItem("Mother's Diary")) {
+            this.creak.play()
+            this.bgm.stop()
+            this.gotoScene('outro')
+        }
     }
 
     onEnter() {

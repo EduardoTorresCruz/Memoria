@@ -4,7 +4,7 @@ class LivingRoom extends GameScene {
     }
 
     preload() {
-        //this.load.path = '/assets/' // <- for local
+        // this.load.path = '/assets/' // <- for local
         this.load.path = '/Memoria/assets/' // <- for github
         this.load.image('lighton', 'Buttons/Light switch on.png')
         this.load.image('lightoff', 'Buttons/Light switch off.png')
@@ -56,16 +56,6 @@ class LivingRoom extends GameScene {
         }
         if (object == this.bedroom) {
             this.showMessage("It's your old room. You don't exactly feel the need to go inside.")
-        }
-        if (object == this.exit) {
-            if (this.hasItem('Baby Crying Clue') && this.hasItem('Broken Record') && this.hasItem('Refurbished Record') && this.hasItem("Mother's Diary")) {
-                this.creak.play()
-                this.bgm.stop()
-                this.gotoScene('credits')
-            }
-            else {
-                this.showMessage("You feel like you're missing something.")
-            }
         }
     }
 
