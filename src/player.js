@@ -25,9 +25,11 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     movePlayer(pointer) {
-        let targetX = pointer.x;
-        let targetY = pointer.y;
-        this.setTarget(targetX, targetY);
+        if (pointer.x < this.scene.game.config.width * 0.75) {
+            let targetX = pointer.x;
+            let targetY = pointer.y;
+            this.setTarget(targetX, targetY);
+        }
     }
 
     update() {

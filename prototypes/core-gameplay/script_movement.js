@@ -24,10 +24,6 @@ class Test1 extends Phaser.Scene {
     update() {
         this.player.update(this.cursors);
     }
-
-    shutdown() {
-        this.player.destroy();
-    }
 }
 
 class Test2 extends Phaser.Scene {
