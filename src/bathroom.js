@@ -30,7 +30,7 @@ class BathRoom extends GameScene {
         if (this.hasItem('Baby Crying Clue') && this.hasItem('Broken Record') && this.hasItem('Refurbished Record') && this.hasItem("Mother's Diary")) {
             this.creak.play()
             this.bgm.stop()
-            this.gotoScene('credits')
+            this.gotoScene('outro')
         }
     }
 
