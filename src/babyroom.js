@@ -23,7 +23,7 @@ class BabyRoom extends GameScene {
     interact(player, object) {
         if (object == this.livingroom) {
             this.creak.play()
-            this.showMessage('implement go to scene living room')
+            // this.bgm.stop()
             this.gotoLivingScene('livingroom', {x:315, y:485})
         }
     }

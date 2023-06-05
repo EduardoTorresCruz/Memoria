@@ -42,7 +42,6 @@ class LivingRoom extends GameScene {
         if (object == this.master) {
             this.creak.play()
             this.bgm.stop()
-            this.showMessage('implement go to scene master bedroom')
             // this.gotoScene('masterbedroom')
         }
         if (object == this.bathroom) {

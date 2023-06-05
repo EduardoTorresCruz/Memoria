@@ -17,8 +17,7 @@ class BathRoom extends GameScene {
         if (object == this.livingroom) {
             this.creak.play()
             this.bgm.stop()
-            this.cry.stop()
-            this.showMessage('implement go to scene living room')
+            this.babycry.stop()
             this.gotoLivingScene('livingroom', {x:350, y:515})
         }
         if (object == this.bath) {
