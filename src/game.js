@@ -5,6 +5,7 @@ class GameScene extends Phaser.Scene {
 
     init(data) {
         this.inventory = data.inventory || [];
+        this.startPosition = data.startPosition;
     }
 
     constructor(key, name) {
@@ -162,6 +163,13 @@ class GameScene extends Phaser.Scene {
         this.cameras.main.fade(this.transitionDuration, 0, 0, 0);
         this.time.delayedCall(this.transitionDuration, () => {
             this.scene.start(key, { inventory: this.inventory });
+        });
+    }
+
+    gotoLivingScene(key, position) {
+        this.cameras.main.fade(this.transitionDuration, 0, 0, 0);
+        this.time.delayedCall(this.transitionDuration, () => {
+            this.scene.start(key, { inventory: this.inventory, startPosition: position });
         });
     }
 

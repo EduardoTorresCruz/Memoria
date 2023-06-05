@@ -19,7 +19,7 @@ class BathRoom extends GameScene {
             this.bgm.stop()
             this.cry.stop()
             this.showMessage('implement go to scene living room')
-            this.gotoScene('livingroom')
+            this.gotoLivingScene('livingroom', {x:350, y:515})
         }
         if (object == this.bath) {
             this.showMessage(this.bathMsg)
@@ -105,15 +105,14 @@ class BathRoom extends GameScene {
                     this.bathMsg = "An old very aged bathtub. It looks like it hasn't been used in ages."
                 }
             });
+            
         this.cursors = this.input.keyboard.createCursorKeys();
         this.player = new Player(this, 500, 550);
         this.input.on('pointerdown', this.player.movePlayer, this.player);
 
-
         this.livingroom = this.add.rectangle(game.config.width/4.5, game.config.height/1.8, 10, 100, 0xFFFFFF, 0.5)
         this.physics.add.existing(this.livingroom)
         this.livingroom.setVisible(false)
-        
         this.livingroominter = this.add.text(game.config.width/4.5, game.config.height/1.8, ' \n \n ')
             .setFontSize(30)
             .setOrigin(0.5)
