@@ -10,7 +10,7 @@ class LivingRoom extends GameScene {
         this.load.image('lightoff', 'Buttons/Light switch off.png')
         this.load.image('bg', 'Background/Background.png')
         this.load.image('player', 'Delilah.png')
-        this.load.image('Mother', 'Mother.png')
+        this.load.image('mother', 'Mother.png')
         this.load.image('RoomOn', 'LivingRoom/LivingRoomLightON.png')
         this.load.image('RoomOff', 'LivingRoom/LivingRoomLightOFF.png')
         this.load.image('doorVert', 'Bathroom/Bathroom door.png')
