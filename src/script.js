@@ -59,8 +59,8 @@ class Settings extends Phaser.Scene {
     }
 
     preload() {
-        //this.load.path = '/assets/' // local
-        this.load.path = '/Memoria/assets/' // github
+        this.load.path = '/assets/' // local
+        //this.load.path = '/Memoria/assets/' // github
         this.load.image('exit', 'Buttons/Exit button.png')
         this.load.audio('page', 'sounds/page.mp3')
     }
