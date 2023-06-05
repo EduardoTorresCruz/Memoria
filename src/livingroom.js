@@ -4,8 +4,8 @@ class LivingRoom extends GameScene {
     }
 
     preload() {
-        // this.load.path = '/assets/' // <- for local
-        this.load.path = '/Memoria/assets/' // <- for github
+        this.load.path = '/assets/' // <- for local
+        // this.load.path = '/Memoria/assets/' // <- for github
         this.load.image('lighton', 'Buttons/Light switch on.png')
         this.load.image('lightoff', 'Buttons/Light switch off.png')
         this.load.image('bg', 'Background/Background.png')
@@ -17,6 +17,7 @@ class LivingRoom extends GameScene {
         this.load.image('doorHori', 'Door.png')
         this.load.audio('switchon', 'sounds/LIGHT SWITCH ON SOUND.mp3')
         this.load.audio('switchoff', 'sounds/LIGHT SWITCH OFF SOUND.mp3')
+        this.load.audio('page', 'sounds/page.mp3')
         this.load.audio('bgm', 'sounds/ambience.wav')
         this.load.audio('cry', 'sounds/mom crying.mp3')
         this.load.audio('creak', 'sounds/creak.mp3')
