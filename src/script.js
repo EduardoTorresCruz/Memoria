@@ -33,7 +33,7 @@ class Title extends Phaser.Scene {
         .on('pointerout', () => this.start.setScale(0.5))
         .on('pointerdown', () => {
             this.page.play()
-            this.time.delayedCall(1000, () => this.scene.start('intro'))
+            this.time.delayedCall(1000, () => this.scene.start('warning'))
         })
         
         this.options = this.add.image(game.config.width/2, game.config.height/2.5, 'options')
