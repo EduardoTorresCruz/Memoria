@@ -29,6 +29,7 @@ class Master extends GameScene {
         if (object == this.door) {
             this.creak.play()
             this.bgm.stop()
+            this.cry.stop()
             this.gotoLivingScene('livingroom', {x:1200, y:505})
         }
         if (object == this.closet) {

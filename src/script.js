@@ -59,7 +59,7 @@ class Settings extends Phaser.Scene {
     }
     
     preload() {
-        //this.load.path = '/assets/' // local
+        // this.load.path = '/assets/' // local
         this.load.path = '/Memoria/assets/' // github
         this.load.image('exit', 'Buttons/Exit button.png')
         this.load.audio('page', 'sounds/page.mp3')
@@ -168,8 +168,11 @@ class Outro extends Phaser.Scene {
     },
     physics: {
         default: 'arcade',
+        arcade: {
+            debug:true
+        }
     },
     type: Phaser.AUTO,
-    scene: [Title, Settings, Intro, LivingRoom, BathRoom, BabyRoom, Master, Outro, Credits],
+    scene: [LivingRoom, Title, Settings, Intro, BathRoom, BabyRoom, Master, Outro, Credits],
     title: "Memoria",
 });

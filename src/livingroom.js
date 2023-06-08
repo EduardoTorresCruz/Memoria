@@ -57,6 +57,12 @@ class LivingRoom extends GameScene {
         if (object == this.bedroom) {
             this.showMessage("It's your old room. You don't exactly feel the need to go inside.")
         }
+        if(this.momGroup.contains(object)){
+            this.player.x=750;
+            this,player.y=1500;
+            this.player.setVelocity(0, 0);
+            this.player.target=null;
+        }
     }
 
     onEnter() {
@@ -80,6 +86,32 @@ class LivingRoom extends GameScene {
             this.player = new Player(this, 750, 1500);
         }
         this.input.on('pointerdown', this.player.movePlayer, this.player);
+
+        // adding move around mom
+        this.momGroup = this.physics.add.group();
+        let path1 = [
+            { x: 900, y: 800 },
+            { x: 1100, y: 800 },
+        ];
+        this.mother1 = new Mom(this, 900, 800, path1);
+        this.mother1.setScale(0.15);
+        this.mother1.setVisible(false);
+        this.mother1.body.checkCollision.none=true;
+        this.mother1.speed=0;
+
+        let path2 = [
+            { x: 500, y: 450 },
+            { x: 500, y: 250 },
+            { x: 1100, y: 250 },
+        ];
+        this.mother2 = new Mom(this, 500, 450, path2);
+        this.mother2.setScale(0.15);
+        this.mother2.setVisible(false);
+        this.mother2.body.checkCollision.none=true;
+        this.mother2.speed=0;
+
+        this.momGroup.add(this.mother1);
+        this.momGroup.add(this.mother2);
 
         // adding sounds
         this.switchOn = this.sound.add('switchon').setVolume(0.25)
@@ -240,6 +272,11 @@ class LivingRoom extends GameScene {
                     this.bloodinter.setVisible(true)
                     this.frameMsg = "A much newer looking family picture. Your Father looks angry, your baby brother is crossed out, and your mom seems to be holding something."
                     this.tvMsg = "The TV is playing a show your baby brother used to love. It hasn't aired in 20 years."
+                    this.momGroup.children.iterate(function(mom) {
+                        mom.setVisible(true);
+                        mom.body.checkCollision.none=false;
+                        mom.speed=(this.inventory.length+1)*100;
+                    }, this);
                 } else {
                     this.light = 1
                     this.switchOn.play()
@@ -253,6 +290,11 @@ class LivingRoom extends GameScene {
                     this.bloodinter.setVisible(false)
                     this.frameMsg = 'A picture of a family of 4. They seem so happy.'
                     this.tvMsg = "The TV seems old and broken. It won't turn on."
+                    this.momGroup.children.iterate(function(mom) {
+                        mom.setVisible(false);
+                        mom.body.checkCollision.none=true;
+                        mom.speed=0;
+                    }, this);
                 }
             });
         // object interactivity
@@ -266,6 +308,9 @@ class LivingRoom extends GameScene {
         this.physics.add.overlap(this.player, this.babyroom, this.interact, null, this)
         this.physics.add.overlap(this.player, this.bedroom, this.interact, null, this)
         this.physics.add.overlap(this.player, this.exit, this.interact, null, this)
+        this.momGroup.children.iterate(function(mom) {
+            this.physics.add.overlap(this.player, mom, this.interact, null, this)
+        }, this);
 
         // setting world bounds
         let leftBarrier = this.physics.add.sprite(this.roomOn.x-550, this.roomOn.y, null).setImmovable(true);
@@ -327,6 +372,9 @@ class LivingRoom extends GameScene {
     }
 
     update() {
+        this.momGroup.children.iterate(function(mom) {
+            mom.update();
+        });
         this.player.update(this.cursors);
     }
 }
