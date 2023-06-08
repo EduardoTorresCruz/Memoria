@@ -4,7 +4,7 @@ class BathRoom extends GameScene {
     }
 
     preload() {
-        //this.load.path = '/assets/' // <- for local
+        // this.load.path = '/assets/' // <- for local
         this.load.path = '/Memoria/assets/' // <- for github
         this.load.image('BathRoomOn', 'Bathroom/Bathroom.png')
         this.load.image('BathRoomOff', 'Bathroom/BathroomLightOFF.png')
@@ -28,8 +28,9 @@ class BathRoom extends GameScene {
             }
         }
         if (this.hasItem('Baby Crying Clue') && this.hasItem('Broken Record') && this.hasItem('Refurbished Record') && this.hasItem("Mother's Diary")) {
-            this.creak.play()
             this.bgm.stop()
+            this.babycry.stop()
+            this.creak.play()
             this.gotoScene('outro')
         }
     }
@@ -40,7 +41,6 @@ class BathRoom extends GameScene {
         this.bgm = this.sound.add('bgm').setVolume(0.25)
         this.bgm.loop = true
         this.bgm.play()
-
 
         this.roomOn = this.physics.add.sprite(game.config.width/2-208, game.config.height/2, 'BathRoomOn').setScale(0.9).setImmovable(true);
         this.roomOff = this.physics.add.sprite(game.config.width/2-208, game.config.height/2, 'BathRoomOff')

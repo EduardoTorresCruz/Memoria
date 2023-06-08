@@ -4,7 +4,7 @@ class BabyRoom extends GameScene {
     }
 
     preload() {
-        //this.load.path = '/assets/' // <- for local
+        // this.load.path = '/assets/' // <- for local
         this.load.path = '/Memoria/assets/' // <- for github
         this.load.image('BabyRoomOn', 'Babyroom/babyRoomOn.png')
         this.load.image('BabyRoomOff', 'Babyroom/babyRoomOff.png')
@@ -34,8 +34,8 @@ class BabyRoom extends GameScene {
             else this.gainItem('Refurbished Record')
         }
         if (this.hasItem('Baby Crying Clue') && this.hasItem('Broken Record') && this.hasItem('Refurbished Record') && this.hasItem("Mother's Diary")) {
+            this.lullaby.stop()
             this.creak.play()
-            this.bgm.stop()
             this.gotoScene('outro')
         }
     }
