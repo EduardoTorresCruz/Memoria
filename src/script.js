@@ -167,9 +167,12 @@ class Outro extends Phaser.Scene {
         height: 1000
     },
     physics: {
-        default: 'arcade'
+        default: 'arcade',
+        arcade: {
+            debug: true
+        }
     },
     type: Phaser.AUTO,
-    scene: [Title, Settings, Intro, LivingRoom, BathRoom, BabyRoom, Outro, Credits],
+    scene: [LivingRoom, Master, Title, Settings, Intro, BathRoom, BabyRoom, Outro, Credits],
     title: "Final Project",
 });

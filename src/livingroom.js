@@ -4,8 +4,8 @@ class LivingRoom extends GameScene {
     }
 
     preload() {
-        // this.load.path = '/assets/' // <- for local
-        this.load.path = '/Memoria/assets/' // <- for github
+        this.load.path = '/assets/' // <- for local
+        // this.load.path = '/Memoria/assets/' // <- for github
         this.load.image('lighton', 'Buttons/Light switch on.png')
         this.load.image('lightoff', 'Buttons/Light switch off.png')
         this.load.image('bg', 'Background/Background.png')
@@ -42,7 +42,7 @@ class LivingRoom extends GameScene {
         if (object == this.master) {
             this.creak.play()
             this.bgm.stop()
-            // this.gotoScene('masterbedroom')
+            this.gotoScene('master')
         }
         if (object == this.bathroom) {
             this.creak.play()
