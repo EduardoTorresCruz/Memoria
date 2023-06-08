@@ -40,8 +40,9 @@ class BabyRoom extends GameScene {
             }
         }
         if(this.momGroup.contains(object)){
-            this.creak.play()
             this.lullaby.stop()
+            this.player.x=-100;
+            this,player.y=-100;
             if(this.hasItem('Broken Record')){
                 this.loseItem('Broken Record')
             }
