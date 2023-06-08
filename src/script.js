@@ -173,6 +173,6 @@ class Outro extends Phaser.Scene {
         }
     },
     type: Phaser.AUTO,
-    scene: [LivingRoom, Master, Title, Settings, Intro, BathRoom, BabyRoom, Outro, Credits],
+    scene: [Title, Settings, Intro, LivingRoom, BathRoom, BabyRoom, Master, Outro, Credits],
     title: "Final Project",
 });
