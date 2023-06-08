@@ -105,9 +105,30 @@ class Settings extends Phaser.Scene {
                 this.page.play()
                 this.time.delayedCall(75, () => this.scene.start('title'))
             })
-        }
     }
-    
+}
+
+class Warning extends Phaser.Scene {
+    constructor() {
+        super('warning')
+    }
+
+    create() {
+        this.cameras.main.fadeIn(1000);
+        this.add.text(game.config.width/2, game.config.height/2, "Trigger Warning:\n\nFor those of you who are sensitive to topics such as \nabuse, or domestic violence, this game's story may\ncontain some disturbing images for you. The game is\ndark, but we hope you enjoy!")
+            .setFontSize(50)
+            .setOrigin(0.5)
+
+        this.time.addEvent({
+            delay: 10000,
+            loop: false,
+            callback: () => {
+                this.scene.start('intro');
+            }
+        });
+    }
+}
+
 class Intro extends Phaser.Scene {
     constructor() {
         super('intro')
@@ -170,6 +191,6 @@ class Outro extends Phaser.Scene {
         default: 'arcade',
     },
     type: Phaser.AUTO,
-    scene: [Title, Settings, Intro, LivingRoom, BathRoom, BabyRoom, Master, Outro, Credits],
+    scene: [Title, Settings, Warning, Intro, LivingRoom, BathRoom, BabyRoom, Master, Outro, Credits],
     title: "Memoria",
 });
