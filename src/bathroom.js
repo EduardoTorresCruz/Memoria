@@ -43,6 +43,7 @@ class BathRoom extends GameScene {
         if(this.momGroup.contains(object)){
             this.player.x=-100;
             this,player.y=-100;
+            this.input.off('pointerdown', this.player.movePlayer, this.player);
             this.bgm.stop()
             this.babycry.stop()
             this.gotoScene('livingroom')
