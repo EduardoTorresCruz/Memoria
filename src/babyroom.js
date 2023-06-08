@@ -43,7 +43,8 @@ class BabyRoom extends GameScene {
             this.lullaby.stop()
             this.player.x=-100;
             this,player.y=-100;
-            this.input.off('pointerdown', this.player.movePlayer, this.player);
+            this.player.setVisible(false);
+            this.player.target=null;
             if(this.hasItem('Broken Record')){
                 this.loseItem('Broken Record')
             }
