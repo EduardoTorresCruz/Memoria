@@ -11,6 +11,15 @@ class BathRoom extends GameScene {
         this.load.audio('creak', 'sounds/creak.mp3')
         this.load.audio('bgm', 'sounds/ambience.wav')
         this.load.audio('babycry', 'Bathroom/baby crying.wav')
+
+        // this.load.image('lighton', 'Buttons/Light switch on.png')
+        // this.load.image('lightoff', 'Buttons/Light switch off.png')
+        // this.load.image('player', 'Delilah.png')
+        // this.load.image('mother', 'Mother.png')
+        // this.load.image('doorVert', 'Bathroom/Bathroom door.png')
+        // this.load.image('doorHori', 'Door.png')
+        // this.load.audio('switchon', 'sounds/LIGHT SWITCH ON SOUND.mp3')
+        // this.load.audio('switchoff', 'sounds/LIGHT SWITCH OFF SOUND.mp3')
     }
 
     interact(player, object) {
@@ -25,7 +34,16 @@ class BathRoom extends GameScene {
             if (this.light == 0) {
                 this.babycry.play()
                 this.gainItem('Baby Crying Clue')
+                this.momGroup.children.iterate(function(mom) {
+                    mom.speed=(this.inventory.length)*100;
+                }, this);
+                
             }
+        }
+        if(this.momGroup.contains(object)){
+            this.bgm.stop()
+            this.babycry.stop()
+            this.gotoScene('livingroom')
         }
         if (this.hasItem('Baby Crying Clue') && this.hasItem('Broken Record') && this.hasItem('Refurbished Record') && this.hasItem("Mother's Diary")) {
             this.bgm.stop()
@@ -63,6 +81,33 @@ class BathRoom extends GameScene {
             .setOrigin(0, 0)
             .setVisible(false)
 
+        // adding move around mom
+        this.momGroup = this.physics.add.group();
+        let path1 = [
+            { x: 450, y: 500 },
+            { x: 700, y: 500 },
+        ];
+        this.mother1 = new Mom(this, 450, 500, path1);
+        this.mother1.setScale(0.15);
+        this.mother1.setVisible(false);
+        this.mother1.body.checkCollision.none=true;
+        this.mother1.speed=0;
+
+        let path2 = [
+            { x: 600, y: 700 },
+            { x: 1000, y: 700 },
+            { x: 1000, y: 400 },
+        ];
+        this.mother2 = new Mom(this, 600, 700, path2);
+        this.mother2.setScale(0.15);
+        this.mother2.setVisible(false);
+        this.mother2.body.checkCollision.none=true;
+        this.mother2.speed=0;
+
+        this.momGroup.add(this.mother1);
+        this.momGroup.add(this.mother2);
+
+        // light switch
         this.lightOn = this.add.image(this.w-4*this.s, this.h-6*this.s, 'lighton')
             .setScale(0.1)
         this.lightOff = this.add.image(this.w-2*this.s, this.h-6*this.s, 'lightoff')
@@ -80,6 +125,7 @@ class BathRoom extends GameScene {
 
         this.light = 1
 
+        // light switch interactivity
         this.lightSwitchinter = this.add.text(this.w-3*this.s, this.h-8*this.s, '  \n  ')
             .setFontSize(`${(2 * this.s) - 10}px`)
             .setInteractive({useHandCursor: true})
@@ -96,6 +142,11 @@ class BathRoom extends GameScene {
                     this.roomOn.body.enable = false;
                     this.roomOff.body.enable = true;
                     this.bathMsg = "A bathtub filled with water and blood."
+                    this.momGroup.children.iterate(function(mom) {
+                        mom.setVisible(true);
+                        mom.body.checkCollision.none=false;
+                        mom.speed=(this.inventory.length)*100;
+                    }, this);
                 } else {
                     this.switchOn.play()
                     this.lightOff.setVisible(false)
@@ -107,6 +158,11 @@ class BathRoom extends GameScene {
                     this.roomOn.body.enable = true;
                     this.roomOff.body.enable = false;
                     this.bathMsg = "An old very aged bathtub. It looks like it hasn't been used in ages."
+                    this.momGroup.children.iterate(function(mom) {
+                        mom.setVisible(false);
+                        mom.body.checkCollision.none=true;
+                        mom.speed=0;
+                    }, this);
                 }
             });
             
@@ -125,6 +181,9 @@ class BathRoom extends GameScene {
 
         this.physics.add.overlap(this.player, this.livingroom, this.interact, null, this)
         this.physics.add.overlap(this.player, this.bath, this.interact, null, this)
+        this.momGroup.children.iterate(function(mom) {
+            this.physics.add.overlap(this.player, mom, this.interact, null, this)
+        }, this);
         
         let leftBarrier = this.physics.add.sprite(this.roomOn.x-350, this.roomOn.y, null).setImmovable(true);
         leftBarrier.body.setSize(1, this.roomOn.height);
@@ -158,6 +217,9 @@ class BathRoom extends GameScene {
     }
 
     update() {
+        this.momGroup.children.iterate(function(mom) {
+            mom.update();
+        });
         this.player.update(this.cursors);
     }
 }

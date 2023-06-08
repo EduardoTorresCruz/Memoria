@@ -273,7 +273,7 @@ class LivingRoom extends GameScene {
                     this.momGroup.children.iterate(function(mom) {
                         mom.setVisible(true);
                         mom.body.checkCollision.none=false;
-                        mom.speed=(this.inventory.length+1)*100;
+                        mom.speed=(this.inventory.length)*100;
                     }, this);
                 } else {
                     this.light = 1

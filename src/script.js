@@ -118,14 +118,16 @@ class Warning extends Phaser.Scene {
         this.add.text(game.config.width/2, game.config.height/2, "Trigger Warning:\n\nFor those of you who are sensitive to topics such as \nabuse, or domestic violence, this game's story may\ncontain some disturbing images for you. The game is\ndark, but we hope you enjoy!")
             .setFontSize(50)
             .setOrigin(0.5)
-
-        this.time.addEvent({
-            delay: 10000,
-            loop: false,
-            callback: () => {
-                this.scene.start('intro');
-            }
+        this.input.on('pointerdown', () => {
+            this.scene.start('intro');
         });
+        // this.time.addEvent({
+        //     delay: 10000,
+        //     loop: false,
+        //     callback: () => {
+        //         this.scene.start('intro');
+        //     }
+        // });
     }
 }
 
@@ -139,14 +141,16 @@ class Intro extends Phaser.Scene {
         this.add.text(game.config.width/2, game.config.height/2, "The Story Begins:\n\nIt's been about twenty years since\nyou've stepped foot in your old house.\nAs per the advice of your therapist, you\ndecide to go back and face some demons\nfrom your past. You feel like you could\ndiscover something here.")
             .setFontSize(50)
             .setOrigin(0.5)
-
-        this.time.addEvent({
-            delay: 10000,
-            loop: false,
-            callback: () => {
-                this.scene.start('livingroom');
-            }
+        this.input.on('pointerdown', () => {
+            this.scene.start('livingroom');
         });
+        // this.time.addEvent({
+        //     delay: 10000,
+        //     loop: false,
+        //     callback: () => {
+        //         this.scene.start('livingroom');
+        //     }
+        // });
     }
 }
 
@@ -168,15 +172,17 @@ class Outro extends Phaser.Scene {
             .setOrigin(0.5)
 
         this.page = this.sound.add('page').setVolume(0.25)
-
-        this.time.addEvent({
-            delay: 25000,
-            loop: false,
-            callback: () => {
-                this.page.play()
-                this.scene.start('credits');
-            }
+        this.input.on('pointerdown', () => {
+            this.scene.start('credits');
         });
+        // this.time.addEvent({
+        //     delay: 25000,
+        //     loop: false,
+        //     callback: () => {
+        //         this.page.play()
+        //         this.scene.start('credits');
+        //     }
+        // });
     }
 }
 
@@ -189,6 +195,9 @@ class Outro extends Phaser.Scene {
     },
     physics: {
         default: 'arcade',
+        // arcade:{
+        //     debug:true
+        // }
     },
     type: Phaser.AUTO,
     scene: [Title, Settings, Warning, Intro, LivingRoom, BathRoom, BabyRoom, Master, Outro, Credits],
