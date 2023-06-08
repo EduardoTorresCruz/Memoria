@@ -168,11 +168,8 @@ class Outro extends Phaser.Scene {
     },
     physics: {
         default: 'arcade',
-        arcade: {
-            debug:true
-        }
     },
     type: Phaser.AUTO,
-    scene: [LivingRoom, Title, Settings, Intro, BathRoom, BabyRoom, Master, Outro, Credits],
+    scene: [Title, Settings, Intro, LivingRoom, BathRoom, BabyRoom, Master, Outro, Credits],
     title: "Memoria",
 });
