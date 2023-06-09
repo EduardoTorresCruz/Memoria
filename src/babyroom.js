@@ -104,15 +104,15 @@ class BabyRoom extends GameScene {
 
         // adding move around mom
         this.momGroup = this.physics.add.group();
-        let path1 = [
-            { x: 450, y: 500 },
-            { x: 700, y: 500 },
-        ];
-        this.mother1 = new Mom(this, 450, 500, path1);
-        this.mother1.setScale(0.15);
-        this.mother1.setVisible(false);
-        this.mother1.body.checkCollision.none=true;
-        this.mother1.speed=0;
+//         let path1 = [
+//             { x: 450, y: 500 },
+//             { x: 700, y: 500 },
+//         ];
+//         this.mother1 = new Mom(this, 450, 500, path1);
+//         this.mother1.setScale(0.15);
+//         this.mother1.setVisible(false);
+//         this.mother1.body.checkCollision.none=true;
+//         this.mother1.speed=0;
 
         let path2 = [
             { x: 600, y: 700 },
@@ -135,7 +135,7 @@ class BabyRoom extends GameScene {
         this.mother3.body.checkCollision.none=true;
         this.mother3.speed=0;
 
-        this.momGroup.add(this.mother1);
+//         this.momGroup.add(this.mother1);
         this.momGroup.add(this.mother2);
         this.momGroup.add(this.mother3);
 
